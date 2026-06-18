@@ -1,4 +1,31 @@
-<div>
-  <h1 class="font-bold text-4xl">StaticPages#top</h1>
-  <p>Find me in app/views/static_pages/top.html.erb</p>
+<div class="w-full">
+  <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+    <h1 class="text-5xl font-bold mb-4">宮城方言タイピング</h1>
+    <p class="text-xl mb-8">タイピングで宮城の魅力を発見しよう！</p>
+    <%= link_to 'スタート', '#', class: 'bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition' %>
+  </div>
+
+  <div class="container mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">このアプリについて</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+          <!-- カード1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-bold mb-4">楽しく学べる</h3>
+        <p class="text-gray-600">タイピングを通じて宮城県の魅力を楽しく学べます。</p>
+      </div>
+
+      <!-- カード2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-bold mb-4">スキルアップ</h3>
+        <p class="text-gray-600">タイピングスキルを向上させながら、地域の知識も深まります。</p>
+      </div>
+
+      <!-- カード3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-bold mb-4">記録を残せる</h3>
+        <p class="text-gray-600">自分の成長を記録として残すことができます。</p>
+      </div>
+    </div>
+  </div>
 </div>
