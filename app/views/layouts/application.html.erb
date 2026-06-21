@@ -25,11 +25,10 @@
   </head>
 
   <body>
-    <div class="bg-blue-500 text-white p-8 text-center text-2xl font-bold m-4">
-      Tailwind テスト成功！
-    </div>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render "shared/header" %>
+    <main class="min-h-screen">
       <%= yield %>
     </main>
+    <%= render "shared/footer" %>
   </body>
 </html>
