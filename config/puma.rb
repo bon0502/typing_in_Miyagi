@@ -30,7 +30,18 @@ threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT", 3000)
+bind "tcp://0.0.0.0:#{ENV.fetch("PORT", 3000)}"
 
+environment ENV.fetch("RAILS_ENV", "development")
+
+#環境の設定
+workers ENV.fetch("WEB_CONCURRENCY", 1)
+
+preload_app! if ENV.fetch("WEB_CONCURRENCY", 1).to_i > 1
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+end
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
 
