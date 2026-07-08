@@ -1,0 +1,39 @@
+<div class="max-w-4xl mx-auto px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-2xl font-bold mb-6">ユーザー登録</div>
+      <%= form_with model: @user do |f| %>
+              <!-- エラーメッセージを表示 -->
+        <% if @user.errors.any? %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :nickname, class: "block text-gray-700 text-sm font-bold mb-2" %>
+          <%= f.text_field :nickname, class: "shadow appearance-none border w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+          <%= f.email_field :email, class: "shadow appearance-none border w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+          <%= f.password_field :password, class: "shadow appearance-none border w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password_confirmation, class: "block text-gray-700 text-sm font-bold mb-2" %>
+          <%= f.password_field :password_confirmation, class: "shadow appearance-none border w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+        <%= f.submit "登録", class: "w-full bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded" %>
+      <% end %>
+      <div class='text-center mt-4'>
+        <%= link_to "ログインはこちら", login_path, class: "text-blue-500 hover:text-blue-700 underline" %>
+      </div>
+    </div>
+  </div>
+</div>

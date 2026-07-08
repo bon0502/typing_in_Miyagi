@@ -6,8 +6,8 @@
   <nav>
     <ul class="flex space-x-4">
       <li><%= link_to "ホーム", root_path, class: "text-blue-50 hover:text-blue-700 font-bold" %></li>
-      <li><%= link_to "新規登録", "#", class: "text-blue-50 hover:text-blue-700 font-bold" %></li>
-      <li><%= link_to "ログイン", "#", class: "text-blue-50 hover:text-blue-700 font-bold" %></li>
+      <li><%= link_to "プロフィール", "#", class: "text-blue-50 hover:text-blue-700 font-bold" %></li>
+      <li><%= link_to "ログアウト", logout_path, method: :delete, data: { turbo_method: :delete }, class: "text-blue-50 hover:text-blue-700 font-bold" %></li>
     </ul>
   </nav>
 </header>
