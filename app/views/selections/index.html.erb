@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "selections", "data-turbo-track": "reload" %>
+
+<div class="container">
+  <h1>🍙 宮城のタイピング 🌙</h1>
+  <h1>コースを選択</h1>
+
+  <div class="options">
+    <div class="option-card easy">
+      <h2>🗣 方言コース</h2>
+      <p>宮城で使われている方言が出てくるコース</p>
+      <%= link_to "選択", "#", class: "btn btn-primary" %>
+    </div>
+
+    <div class="option-card normal">
+      <h2>🍡 名物コース</h2>
+      <p>宮城で有名な食べ物の名前が出てくるコース</p>
+      <%= link_to "選択", "#", class: "btn btn-primary" %>
+    </div>
+
+    <div class="option-card hard">
+      <h2>🌸 まるごとコース</h2>
+      <p>宮城に関するもの全てがランダムに出てくるコース</p>
+      <%= link_to "選択", "#", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <%= link_to "🏠 トップへ戻る", root_path, class: "back-button" %>
+</div>

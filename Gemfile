@@ -45,8 +45,8 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
-#本番環境用のgem
-gem 'pg'
+# 本番環境用のgem
+gem "pg"
 
 group :development, :test do
   # gem "mysql2", "~> 0.5"
