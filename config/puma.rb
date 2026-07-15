@@ -34,7 +34,7 @@ bind "tcp://0.0.0.0:#{ENV.fetch("PORT", 3000)}"
 
 environment ENV.fetch("RAILS_ENV", "development")
 
-#環境の設定
+# 環境の設定
 workers ENV.fetch("WEB_CONCURRENCY", 1)
 
 # preload_app! if ENV.fetch("WEB_CONCURRENCY", 1).to_i > 1
