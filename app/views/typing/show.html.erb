@@ -1,0 +1,93 @@
+<% content_for(:title, @course_name) %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "typing", "data-turbo-track": "reload" %>
+<% end %>
+
+<div class="typing-container">
+  <h1 class="course-title"><%= @course_name %></h1>
+
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress"></div>
+  </div>
+
+  <div class="score-display">
+    <p>スコア：<span class="score-value" id="score">0</span></p>
+  </div>
+
+  <div class="combo-display">
+    <p><span id ="combo-value">0</span>コンボ！</p>
+  </div>
+
+  <div class="timer">
+    <p>残り時間：<span id="timer-value">60</span>秒</p>
+  </div>
+
+  <div class="start-button-container">
+    <button id="start-button" class="start-button">スタート</button>
+  </div>
+
+  <div class="typing-area hidden" id="typing-area">
+    <p class="question"><%= @question %></p>
+    <input type="text" id="typing-input" class="typing-input" placeholder="ここに入力してください">
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+<script>
+  const question = "<%= @question %>";
+  const input = document.getElementById('typing-input');
+  const result = document.getElementById('result');
+  const scoreElement = document.getElementById('score');
+  const timerElement = document.getElementById('timer-value');
+  const comboElement = document.getElementById('combo-value');
+  const startButton = document.getElementById('start-button');
+  const typingArea = document.getElementById('typing-area');
+  let comboCount = 0; // コンボの初期値
+  let timeLeft = 60; // タイマーの初期値（秒）
+  let score = 0; // スコアの初期値
+  let timer; // タイマーを管理する変数
+
+  if (!startButton) {
+    console.error('開始ボタンが見つかりません！');
+  } else {
+    startButton.addEventListener('click', () => {
+      console.log('開始ボタンがクリックされました！');
+      
+      // ボタンを非表示
+      startButton.style.display = 'none';
+      
+      // ★ 問題エリアを表示
+      typingArea.classList.remove('hidden');
+      
+      // 入力欄を有効化してフォーカス
+      input.disabled = false;
+      input.focus();
+      
+      // タイマーを開始
+      timer = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          alert('時間切れです！スコア: ' + score);
+          input.disabled = true;
+        }
+      }, 1000);
+    });
+  }
+
+  input.addEventListener('input', () => {
+    if (input.value === question) {
+      result.textContent = '正解！';
+      result.style.color = 'green';
+      comboCount++;
+      comboElement.textContent = comboCount;
+      score += 10;
+      scoreElement.textContent = score;
+    } else {
+      result.textContent = '';
+    }
+  });
+</script>
