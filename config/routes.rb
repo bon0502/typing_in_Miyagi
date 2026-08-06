@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :courses do
-      resources :typing_questions, except: [:show] do
-        resources :typing_answers, only: [:new, :create, :destroy]
+      resources :typing_questions, except: [ :show ] do
+        resources :typing_answers, only: [ :new, :create, :destroy ]
       end
     end
   end
