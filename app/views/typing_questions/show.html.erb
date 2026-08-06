@@ -1,0 +1,153 @@
+<div class="container mt-5">
+  <div class="typing-container">
+    <!-- 問題文 -->
+    <div class="question-section mb-4">
+      <h3 class="text-center mb-3">問題</h3>
+      <h2 class="text-center text-primary"><%= @typing_question.question_text %></h2>
+
+      <% if @typing_question.meaning.present? %>
+        <p class="text-center text-muted mt-2" >
+        意味:  <%= @typing_question.meaning %>
+        </p>
+      <% end %>
+    </div>
+
+    <!-- 答えの表示エリア -->
+    <div class="answer-display mb-4">
+      <div class="text-center">
+        <div id="answer-text" class="h4 mb-3" style="font-family: monospace; letter-spacing: 0.2em;">
+          <!-- ここに答えの文字が表示される -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 入力フォーム -->
+    <input type="text"
+           id="typing-input"
+           class="form-control text-center"
+           style="font-size: 1.5rem; letter-spacing: 0.2em; font-family: monospace;"
+           autocomplete="off"
+           autofocus>
+
+    <!-- ミスカウント表示 -->
+    <div class="text-center mt-3">
+      <span class="badge bg-warning">ミス: <span id="miss-count">0</span>回</span>
+    </div>
+
+    <!-- 隠しデータ -->
+    <input type="hidden" id="question-id" value="<%= @typing_question.id %>">
+    <input type="hidden" id="correct-answer" value="<%= @typing_question.typing_answers.first&.answer_text %>">
+  </div>
+</div>
+
+<style>
+  .typing-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .answer-display {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    min-height: 100px;
+  }
+
+  .correct {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .incorrect {
+    color: #dc3545;
+  }
+
+  .pending {
+    color: #6c757d;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const inputElement = document.getElementById('typing-input');
+    const answerTextElement = document.getElementById('answer-text');
+    const correctAnswer = document.getElementById('correct-answer').value;
+    const missCountElement = document.getElementById('miss-count');
+
+    let currentIndex = 0;
+    let missCount = 0;
+
+    // 初期表示
+    displayAnswer();
+
+    // 入力イベント
+    inputElement.addEventListener('input', function(event) {
+      const userInput = this.value;
+
+      // 現在の入力位置の文字をチェック
+      if (currentIndex < correctAnswer.length) {
+        const currentChar = userInput[currentIndex];
+        const correctChar = correctAnswer[currentIndex];
+
+        if (currentChar === correctChar) {
+          // 正解
+          currentIndex++;
+          displayAnswer();
+
+          // 全問正解チェック
+          if (currentIndex === correctAnswer.length) {
+            handleCorrectAnswer();
+          }
+        } else if (currentChar !== undefined) {
+          // 不正解（ミスタイプ）
+          missCount++;
+          missCountElement.textContent = missCount;
+          displayMistake();
+
+          // 入力をクリア
+          this.value = userInput.slice(0, currentIndex);
+        }
+      }
+    });
+
+    // 答えの表示を更新
+    function displayAnswer() {
+      let html = '';
+
+      for (let i = 0; i < correctAnswer.length; i++) {
+        if (i < currentIndex) {
+          // すでに入力済み（正解）の文字
+          html += `<span class="correct">${correctAnswer[i]}</span>`;
+        } else {
+          // まだ入力していない文字
+          html += `<span class="pending">${correctAnswer[i]}</span>`;
+        }
+      }
+
+      answerTextElement.innerHTML = html;
+    }
+
+    // ミスタイプ時の表示
+    function displayMistake() {
+      // 一時的に背景を赤くする
+      answerTextElement.style.backgroundColor = '#ffe6e6';
+
+      setTimeout(() => {
+        answerTextElement.style.backgroundColor = '';
+      }, 200);
+    }
+
+    // 全問正解したときの処理
+    function handleCorrectAnswer() {
+      answerTextElement.innerHTML = `<span class="correct">${correctAnswer}</span>`;
+      inputElement.disabled = true;
+
+      setTimeout(() => {
+        alert(`正解です！\nミス回数: ${missCount}回`);
+        // 次の問題へ遷移
+        // location.href = '/courses/<%= @typing_question.course_id %>/typing_questions/next';
+      }, 500);
+    }
+  });
+</script>

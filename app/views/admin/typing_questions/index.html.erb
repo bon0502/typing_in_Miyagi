@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h1>タイピング問題一覧</h1>
+
+  <%= link_to '問題を追加', new_admin_course_typing_question_path(@course), class: 'btn btn-primary mb-3' %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>質問</th>
+        <th>意味</th>
+        <th>答え</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @typing_questions.each do |question| %>
+        <tr>
+          <td><%= question.question_text %></td>
+          <td><%= question.meaning || "(意味が登録されていません) " %></td>
+          <td>
+            <% if question.typing_answers.any? %>
+              <ul>
+                <% question.typing_answers.each do |answer| %>
+                  <li>
+                    <%= answer.answer_text %>
+                    <%= link_to '削除', admin_course_typing_question_typing_answer_path(@course, question, answer), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <span class="text-muted">答えがありません</span>
+            <% end %>
+            <%= link_to '答えを追加', new_admin_course_typing_question_typing_answer_path(@course, question), class: 'btn btn-sm btn-success' %>
+          </td>
+          <td>
+            <%= link_to '編集', edit_admin_course_typing_question_path(@course, question), class: 'btn btn-sm btn-primary' %>
+            <%= link_to '削除', admin_course_typing_question_path(@course, question), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'コース一覧に戻る', admin_courses_path, class: 'btn btn-secondary' %>
+</div>

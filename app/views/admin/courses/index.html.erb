@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h1>コース管理</h1>
+  <%= link_to "新しいコースを作成", new_admin_course_path, class: "btn btn-primary mb-3", data: { turbo: false } %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>コース名</th>
+        <th>問題数</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= course.typing_questions.count %>問</td>
+          <td>
+            <%= link_to '詳細', admin_course_path(course), class: 'btn btn-sm btn-info' %>
+            <%= link_to '編集', edit_admin_course_path(course), class: 'btn btn-sm btn-warning' %>
+            <%= button_to '削除', admin_course_path(course), method: :delete, 
+                          data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
