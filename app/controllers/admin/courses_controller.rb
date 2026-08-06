@@ -1,5 +1,5 @@
 class Admin::CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @courses = Course.all
@@ -16,7 +16,7 @@ class Admin::CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to admin_course_path(@course), notice: 'コースが作成されました。'
+      redirect_to admin_course_path(@course), notice: "コースが作成されました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Admin::CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      redirect_to admin_course_path(@course), notice: 'コースが更新されました。'
+      redirect_to admin_course_path(@course), notice: "コースが更新されました。"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class Admin::CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to admin_courses_path, notice: 'コースが削除されました。'
+    redirect_to admin_courses_path, notice: "コースが削除されました。"
   end
 
   private

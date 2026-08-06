@@ -9,7 +9,7 @@ class Admin::TypingAnswersController < ApplicationController
   def create
     @typing_answer = @typing_question.typing_answers.build(typing_answer_params)
     if @typing_answer.save
-      redirect_to admin_course_path(@course), notice: '答えを作成しました'
+      redirect_to admin_course_path(@course), notice: "答えを作成しました"
     else
       render :new
     end
@@ -18,7 +18,7 @@ class Admin::TypingAnswersController < ApplicationController
   def destroy
     @typing_answer = @typing_question.typing_answers.find(params[:id])
     @typing_answer.destroy
-    redirect_to admin_course_typing_questions_path(@typing_question.course), notice: '答えを削除しました'
+    redirect_to admin_course_typing_questions_path(@typing_question.course), notice: "答えを削除しました"
   end
 
   private
