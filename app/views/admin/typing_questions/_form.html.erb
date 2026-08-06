@@ -1,0 +1,68 @@
+<%= form_with model: [:admin, @course, typing_question], local: true do |f| %>
+  <% if typing_question.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(typing_question.errors.count, "error") %> prohibited this question from being saved:</h4>
+      <ul>
+        <% typing_question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :question_text, '問題文', class: 'form-label' %>
+    <%= f.text_area :question_text, class: 'form-control', rows: 3, placeholder: '例: りんごをローマ字で入力してください' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :meaning, '意味', class: 'form-label' %>
+    <%= f.text_area :meaning, class: 'form-control', rows: 3, placeholder: '例: 赤い果物で、甘酸っぱい味がする' %>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">答え</label>
+    <div id="answers">
+      <%= f.fields_for :typing_answers do |answer_fields| %>
+        <div class="answer-field mb-2">
+          <div class="input-group">
+            <%= answer_fields.text_field :answer_text, class: 'form-control', placeholder: '例: ringo' %>
+            <% if answer_fields.object.persisted? %>
+              <div class="input-group-text">
+                <%= answer_fields.check_box :_destroy, class: 'form-check-input mt-0' %>
+                <%= answer_fields.label :_destroy, '削除', class: 'form-check-label ms-1' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <button type="button" class="btn btn-sm btn-secondary mt-2" id="add-answer">答えを追加</button>
+  </div>
+
+  <div class="mb-3">
+    <%= f.submit button_text, class: 'btn btn-primary' %>
+    <%= link_to 'キャンセル', admin_course_path(@course), class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addButton = document.getElementById('add-answer');
+    const answersContainer = document.getElementById('answers');
+
+    addButton.addEventListener('click', function() {
+      const time = new Date().getTime();
+      const lastAnswerField = answersContainer.querySelector('.answer-field:last-child');
+      const newField = lastAnswerField.cloneNode(true);
+
+      // IDとnameを更新
+      const input = newField.querySelector('input[type="text"]');
+      input.value = '';
+      input.name = input.name.replace(/\[\d+\]/, `[${time}]`);
+      input.id = input.id.replace(/_\d+_/, `_${time}_`);
+
+      answersContainer.appendChild(newField);
+    });
+  });
+</script>

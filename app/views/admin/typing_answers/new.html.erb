@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h1>答えを追加</h1>
+
+  <p>質問: <%= @typing_question.question_text %></p>
+
+  <%= form_with model: [:admin, @typing_question.course, @typing_question, @typing_answer], local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :answer_text, '答え' %>
+      <%= f.text_field :answer_text, class: 'form-control' %>
+    </div>
+
+    <%= f.submit '作成', class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= link_to '戻る', admin_course_typing_questions_path(@typing_question.course), class: 'btn btn-secondary mt-3' %>
+</div>

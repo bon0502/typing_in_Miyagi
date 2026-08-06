@@ -1,0 +1,24 @@
+<%= form_with model: typing_question, local: true do |f| %>
+  <% if typing_question.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= typing_question.errors.count %>件のエラーがあります</h4>
+      <ul>
+        <% typing_question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :question_text, '問題文', class: 'form-label' %>
+    <%= f.text_field :question_text, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :meaning, '意味', class: 'form-label' %>
+    <%= f.text_field :meaning, class: 'form-control' %>
+  </div>
+
+  <%= f.submit button_text, class: 'btn btn-primary' %>
+<% end %>

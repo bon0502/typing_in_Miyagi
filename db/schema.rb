@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_06_22_021533) do
+ActiveRecord::Schema[7.2].define(version: 2026_08_03_073556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "typing_answers", force: :cascade do |t|
+    t.bigint "typing_question_id", null: false
+    t.string "answer_text", null: false
+    t.boolean "is_primary", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["typing_question_id"], name: "index_typing_answers_on_typing_question_id"
+  end
+
+  create_table "typing_questions", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.string "question_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "meaning"
+    t.index ["course_id"], name: "index_typing_questions_on_course_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -23,4 +47,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_021533) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "typing_answers", "typing_questions"
+  add_foreign_key "typing_questions", "courses"
 end

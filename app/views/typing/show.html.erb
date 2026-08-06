@@ -28,42 +28,120 @@
   </div>
 
   <div class="typing-area hidden" id="typing-area">
-    <p class="question"><%= @question %></p>
+    <p class="question" id="question-text"></p>
+    <p class="question-meaning" id="question-meaning"></p>
     <input type="text" id="typing-input" class="typing-input" placeholder="ここに入力してください">
     <div class="result" id="result"></div>
+  </div>
+
+  <div class="result-modal hidden" id="result-modal">
+    <div class="result-modal-content">
+      <h2>ゲーム終了！</h2>
+      <div class="result-details">
+        <p class="final-score">最終スコア：<span id="final-score">0</span></p>
+        <p class="max-combo">最大コンボ：<span id="max-combo">0</span></p>
+      </div>
+      <div class="result-buttons">
+        <button id="retry-button" class="retry-button">もう一度</button>
+        <button id="back-button" class="btn btn-primary back-button">コース選択に戻る</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-  const question = "<%= @question %>";
+  // データベースから取得した問題をJavaScript配列に変換
+  let questions = <%= raw @typing_questions.map { |q|
+    {
+      question: q.question_text,
+      meaning: q.meaning,
+      answers: q.typing_answers.map(&:answer_text)
+    }
+  }.to_json %>;
+
   const input = document.getElementById('typing-input');
   const result = document.getElementById('result');
+  const questionText = document.getElementById('question-text');
   const scoreElement = document.getElementById('score');
   const timerElement = document.getElementById('timer-value');
   const comboElement = document.getElementById('combo-value');
   const startButton = document.getElementById('start-button');
   const typingArea = document.getElementById('typing-area');
-  let comboCount = 0; // コンボの初期値
-  let timeLeft = 60; // タイマーの初期値（秒）
-  let score = 0; // スコアの初期値
-  let timer; // タイマーを管理する変数
+  const progressBar = document.getElementById('progress');
+  const resultModal = document.getElementById('result-modal');
 
+  let currentQuestionIndex = 0; // 現在の問題番号
+  let comboCount = 0;
+  let maxCombo = 0;
+  let correctCount = 0;
+  let timeLeft = 60;
+  let score = 0;
+  let timer;
+
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i --) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  function showResult(message) {
+    input.disabled = true;
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('max-combo').textContent = maxCombo;
+    resultModal.classList.remove('hidden');
+  }
+
+  document.getElementById('retry-button').addEventListener('click', () => {
+    location.reload();
+  });
+
+  document.getElementById('back-button').addEventListener('click', () => {
+    window.location.href = '/selections';
+  });
+
+  // 問題を表示する関数
+  function displayQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+      // すべての問題が終了した場合
+      clearInterval(timer);
+      showResult('すべての問題をクリア！');
+      return;
+    }
+
+    const currentQuestion = questions[currentQuestionIndex];
+    questionText.textContent = currentQuestion.question;
+
+    const meaningElement = document.getElementById('question-meaning');
+    meaningElement.textContent = `意味：${currentQuestion.meaning}`;
+
+    input.value = '';
+    result.textContent = '';
+
+    // プログレスバーを更新
+    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    progressBar.style.width = progress + '%';
+  }
+
+  // スタートボタンのイベント
   if (!startButton) {
     console.error('開始ボタンが見つかりません！');
   } else {
     startButton.addEventListener('click', () => {
       console.log('開始ボタンがクリックされました！');
-      
-      // ボタンを非表示
+
+      questions = shuffleArray(questions);
+
       startButton.style.display = 'none';
-      
-      // ★ 問題エリアを表示
       typingArea.classList.remove('hidden');
-      
-      // 入力欄を有効化してフォーカス
       input.disabled = false;
       input.focus();
-      
+
+      // 最初の問題を表示
+      displayQuestion();
+
       // タイマーを開始
       timer = setInterval(() => {
         timeLeft--;
@@ -71,23 +149,64 @@
 
         if (timeLeft <= 0) {
           clearInterval(timer);
-          alert('時間切れです！スコア: ' + score);
-          input.disabled = true;
+          showResult('時間切れ！');
         }
       }, 1000);
     });
   }
 
+  // 入力チェック
   input.addEventListener('input', () => {
-    if (input.value === question) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const userInput = input.value.trim();
+
+    // 正解判定（複数の答えに対応）
+    const isCorrect = currentQuestion.answers.some(answer => userInput === answer);
+
+    if (isCorrect) {
       result.textContent = '正解！';
       result.style.color = 'green';
       comboCount++;
       comboElement.textContent = comboCount;
+
+      if (comboCount > maxCombo) {
+        maxCombo = comboCount;
+      }
+
       score += 10;
       scoreElement.textContent = score;
+
+      // 次の問題へ
+      currentQuestionIndex++;
+      setTimeout(() => {
+        displayQuestion();
+      }, 500); // 0.5秒後に次の問題を表示
     } else {
-      result.textContent = '';
+
+          let isPartiallyCorrect = false;
+
+      // いずれかの答えの先頭部分と一致しているかチェック
+      for (let answer of currentQuestion.answers) {
+        if (answer.startsWith(userInput)) {
+          isPartiallyCorrect = true;
+          break;
+        }
+      }
+
+      if (isPartiallyCorrect) {
+        // 入力途中で正しい場合
+        result.textContent = '入力中...';
+        result.style.color = 'blue';
+      } else if (userInput.length > 0) {
+        // 入力が間違っている場合
+        result.textContent = '間違っています！';
+        result.style.color = 'red';
+        comboCount = 0; // コンボをリセット
+        comboElement.textContent = comboCount;
+      } else {
+        // 入力が空の場合
+        result.textContent = '';
+      }
     }
   });
 </script>
