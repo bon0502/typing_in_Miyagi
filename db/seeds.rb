@@ -17,35 +17,35 @@ marugoto = Course.create!(name: "🌸 方言会話コース")
 
 # 方言コースの問題
 hougen.typing_questions.create!([
-  { question_text: "いずい" },
-  { question_text: "たごまる" },
-  { question_text: "うるかす" },
-  { question_text: "おしょすい" },
-  { question_text: "がおる" },
-  { question_text: "おばんです" },
-  { question_text: "がおった" },
-  { question_text: "いぎなり" },
-  { question_text: "おだつなよ" },
-  { question_text: "食ってけさいん" },
-  { question_text: "ごっしゃぐ" },
-  { question_text: "しずね" },
-  { question_text: "しずねっこ" },
-  { question_text: "ひゃっこい" },
-  { question_text: "いがす" },
-  { question_text: "やんだ" }
+  { question_text: "いずい", answer: "izui", meaning: "「しっくりこない」「違和感がある」" },
+  { question_text: "たごまる", answer: "tagomsru", meaning: "服や紐などがしわくちゃに縮むなど" },
+  { question_text: "うるかす", answer: "urukasu", meaning: "「水に浸しておく」「水につけてふかふかにふやかす」など" },
+  { question_text: "おしょすい", answer: "osyosui", meaning: "恥ずかしい" },
+  { question_text: "がおる", answer: "gaoru", meaning: "疲れた" },
+  { question_text: "おばんです", answer: "obanndesu", meaning: "こんばんは(夕方から夜にかけて)" },
+  { question_text: "がおった", answer: "gaotta","gaoxtuta", meaning: "疲れた" },
+  { question_text: "いぎなり", answer: "iginari", meaning: "「とても」「すごく」「非常に」" },
+  { question_text: "おだつなよ", answer: "odatunayo", meaning: "「ふざけるな」「いい気になるな」「調子に乗るな」など " },
+  { question_text: "食ってけさいん", answer: "kuttekesainn", "kuxtukesainn", meaning: "「食べてください」「食べていってください」" },
+  { question_text: "ごっしゃぐ", answer: "gossyagu", "goxtusyagu", "gossixyagu", meaning: "「怒る」「叱る」など " },
+  { question_text: "しずね", answer: "sizune", meaning: "「うるさい」「騒がしい」など " },
+  { question_text: "ひゃっこい", answer: "hyakkoi", "hixyakkoi", "hyaxtukoi", meaning: "「冷たい」" },
+  { question_text: "いがす", answer: "igasu", meaning: "「いいよ」「了解」など。地域によって「いらない（不要）」という意味も" },
+  { question_text: "やんだ", answer: "yannda", meaning: "「嫌だ」" }
 ])
 
-# 名物コースの問題
+# 名物地名コースの問題
 meibutsu.typing_questions.create!([
-  { question_text: "ずんだ" },
-  { question_text: "牛タン" }
+  { question_text: "ずんだ", answer: "zunnda" },
+  { question_text: "牛タン", answer: "gyuutann" },
+  { question_text: "仙台", answer: "senndai" }
 ])
 
-# まるごとコースの問題
+# 方言会話コースの問題
 marugoto.typing_questions.create!([
-  { question_text: "仙台七夕" },
-  { question_text: "光のページェント" },
-  { question_text: "青葉城" }
+  { question_text: "おはよう靴下だね", answer: "ohayoukutusitadane",  meaning: "靴下穴あいてるね" },
+  { question_text: "おめえこばがくせえな", answer: "omeekobagakuseena", meaning: "「お前は馬鹿みたいだ」" },
+  { question_text: "しじゃかぶがいてえ", answer: "sijakabugaitee", meaning: "膝が痛い" }
 ])
 
 puts "シードデータの作成が完了しました！"
