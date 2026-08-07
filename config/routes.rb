@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
+  post "typing/:id/check_answer", to: "typing#check_answer", as: "check_answer"
+
   namespace :admin do
     resources :courses do
       resources :typing_questions, except: [ :show ] do
