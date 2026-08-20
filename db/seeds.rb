@@ -11,6 +11,8 @@
 TypingQuestion.destroy_all
 Course.destroy_all
 
+ActiveRecord::Base.connection.reset_pk_sequence!('courses')
+
 hougen = Course.create!(name: "🗣 方言コース")
 meibutsu = Course.create!(name: "🍡 名物地名コース")
 marugoto = Course.create!(name: "🌸 方言会話コース")
