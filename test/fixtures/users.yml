@@ -1,11 +1,25 @@
+<% require 'bcrypt' %>
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+
+one:
+  email: test1@example.com
+  crypted_password: <%= BCrypt::Password.create('password', cost: 4) %>
+  salt: <%= BCrypt::Engine.generate_salt %>
+  nickname: "テストユーザー１"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
 # column: value
 #
-two: {}
+two:
+  email: test2@example.com
+  crypted_password: <%= BCrypt::Password.create('password', cost: 4) %>
+  salt: <%= BCrypt::Engine.generate_salt %>
+  nickname: "テストユーザー２"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
 # column: value

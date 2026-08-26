@@ -76,7 +76,7 @@ meibutsu_questions = [
   { question_text: "はらこ飯(はらこめし)", meaning: "鮭の煮汁で炊いたご飯に、大ぶりの鮭の身とイクラを敷き詰めたご飯", answers: [ "harakomeshi", "harakomesi" ] },
   { question_text: "ずんだ餅(ずんだもち)", meaning: "ずんだを餅にかけたもの", answers: [ "zundamoti", "zundamochi", "zunndamoti" ] },
   { question_text: "せり鍋(せりなべ)", meaning: "せりを根っこから葉まで使った鍋料理", answers: [ "serinabe" ] },
-  { question_text: "仙台牛(せんだいぎゅう)", meaning: "宮城県産の黒毛和牛", answers: [ "sendaigyu", "senndaigyuu","senndaigixyuu", "sendaigixyuu" ] },
+  { question_text: "仙台牛(せんだいぎゅう)", meaning: "宮城県産の黒毛和牛", answers: [ "sendaigyu", "senndaigyuu", "senndaigixyuu", "sendaigixyuu" ] },
   { question_text: "仙台麻婆焼きそば(せんだいまーぼーやきそば)", meaning: "焼いた、または揚げた中華麺のうえに麻婆豆腐がかかった仙台のソウルフード", answers: [ "sendaima-bo-yakisoba", "senndaima-bo-yakisoba" ] },
   { question_text: "ずんだシェイク(ずんだしぇいく)", meaning: "ずんだを使ったシェイク", answers: [ "zundasyeiku", "zunndasyeiku", "zunndasixeiku", "zundasixeiku" ] },
   { question_text: "ひょうたん揚げ(ひょうたんあげ)", meaning: "塩味のきいた丸いかまぼこに、ほんのり甘めの衣をまとわせて揚げたアメリカンドッグの蒲鉾バージョン。", answers: [ "hyoutanage", "hixyoutanage", "hixyoutannage", "hyoutannage" ] },
