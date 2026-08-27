@@ -41,8 +41,7 @@ hougen_questions = [
   { question_text: "うろからする", meaning: "「うろうろする」「落ち着かない」など", answers: [ "urokarasuru" ] },
   { question_text: "えらい", meaning: "「大変だ」「すごい」など", answers: [ "erai" ] },
   { question_text: "くろちよる", meaning: "青タン（アザ）", answers: [ "kurochiyoru", "kurotiyoru" ] },
-  { question_text: "けえ", meaning: "「食べろ」", answers: [ "kee" ] },
-  { question_text: "けえるのわ", meaning: "「帰るのですか？」", answers: [ "keerunowa" ] },
+  { question_text: "けえるのわ", meaning: "「帰るわ」", answers: [ "keerunowa" ] },
   { question_text: "しゃね", meaning: "「知らなかった」", answers: [ "syane", "sixyane" ] },
   { question_text: "たまげる", meaning: "「驚く」「びっくりする」など", answers: [ "tamageru" ] },
   { question_text: "とっけす", meaning: "「奪う」", answers: [ "tokkesu", "toxtukesu" ] },
@@ -52,7 +51,7 @@ hougen_questions = [
   { question_text: "もじゃくる", meaning: "(紙など)くしゃくしゃにする。しわくちゃにする。", answers: [ "mojakuru", "mozixyakuru" ] },
   { question_text: "んだ", meaning: "「そうだ」", answers: [ "nda", "nnda" ] },
   { question_text: "もぞこい", meaning: "「かわいそう」", answers: [ "mozokoi" ] },
-  { question_text: "すっぱね", meaning: "雨の日に足につく泥はねの事。」", answers: [ "suppane", "suxtupane" ] }
+  { question_text: "すっぱね", meaning: "雨の日に足につく泥はねの事。", answers: [ "suppane", "suxtupane" ] }
 ]
 
 hougen_questions.each do |q_data|
@@ -135,10 +134,37 @@ end
 
 # 方言会話コースの問題
 marugoto_questions = [
-  { question_text: "おはよう靴下だね", meaning: "靴下穴あいてるね", answers: [ "ohayoukutusitadane" ] },
+  { question_text: "おはよう靴下だね(おはようくつしただね)", meaning: "靴下穴あいてるね", answers: [ "ohayoukutusitadane" ] },
   { question_text: "おめえこばがくせえな", meaning: "「お前は馬鹿みたいだ」", answers: [ "omeekobagakuseena" ] },
-  { question_text: "しじゃかぶがいてえ", meaning: "膝が痛い", answers: [ "sijakabugaitee" ] }
-
+  { question_text: "しじゃかぶがいてえ", meaning: "膝が痛い", answers: [ "sijakabugaitee" ] },
+  { question_text: "目にばかできた(めにばかできた)", meaning: "「目にものもらいできた」", answers: [ "menimonomoraidekita"]},
+  { question_text: "服のタグがいずい(ふくのたぐがいずい)", meaning: "服のタグがチクチクする", answers: [ "fukunotagugaizui", "hukunotagugaizui" ] },
+  { question_text: "目にゴミが入っていずい(めにごみがはいっていずい)", meaning: "目にゴミが入って違和感がある", answers: [ "menigomigahaitteizui", "menigomigahaixtuteizui" ] },
+  { question_text: "お米うるかしておいて(おめいうるかしておいて)", meaning: "お米を(水に)浸しておいて", answers: [ "okomeurukasiteoite", "okomeurukashiteoite" ] },
+  { question_text: "いきなりがおった", meaning: "すごく疲れた", answers: [ "ikinarigaotta", "ikinarigaoxtuta" ] },
+  { question_text: "けっぱれ宮城(けっぱれみやぎ)", meaning: "頑張れ宮城", answers: [ "kepparemiyagi", "kextuparemiyagi" ] },
+  { question_text: "しずねどごしゃぐからな", meaning: "うるさいと怒るからな", answers: [ "sizunedogosyagukarana", "sizunedogosixyagukarana", "shizunedogoshagukarana" ] },
+  { question_text: "んだから！", meaning: "「そうそう！」「そうだよね！」", answers: [ "ndakara", "nndakara" ] },
+  { question_text: "子猫めんこいな(こねこめんこいな)", meaning: "子猫かわいいな", answers: [ "konekomennkoina", "konekomenkoina" ] },
+  { question_text: "ゴミ投げてきて(ごみなげてきて)", meaning: "ゴミを捨ててきて", answers: [ "gominagetekite" ] },
+  { question_text: "いつまでむんつけているんだ", meaning: "いつまで拗ねているんだ", answers: [ "itumademunntuketeirunnda", "itumademuntuketeirunda" ] },
+  { question_text: "人さなんだりかんだり教えんな(ひとさなんだりかんだりおしえんな)", meaning: "人にあれこれ教えるな", answers: [ "hitosananndarikanndariosiennna", "hitosanandarikandariosienna", "hitosananndarikanndatioshiennna" ] },
+  { question_text: "袖がたごまった(そでがたごまった)", meaning: "袖がくしゃくしゃに溜まっている感じになった", answers: [ "sodegatagomatta", "sodegatagomaxyuta" ] },
+  { question_text: "おしょすいことすな", meaning: "恥ずかしいことするな", answers: [ "osyosuikotosuna", "oshosuikotosuna" ] },
+  { question_text: "あんまりおだつなよ", meaning: "あまり調子に乗るなよ", answers: [ "annmariodatunayo", "annmariodatunayo" ] },
+  { question_text: "朝の水がひゃっこいな(あさのみずがひゃっこいな)", meaning: "朝の水が冷たいな", answers: [ "asanomizugahyakkoina", "asanomizugahyaxtukoina", "asanomizugahixyakkoina", "asanomizugahixyaxtukoina" ] },
+  { question_text: "言うことがあぺとぺだな", meaning: "言うことが辻褄が合わないな", answers: [ "iukotogaapetopedana" ] },
+  { question_text: "なじょして遅刻した？(なじょしてちこくした？)", meaning: "どうして遅刻した？", answers: [ "najositetikokusita", "nazyositetikokusita", "najoshitetikokushita", "nazyositetikokusita", "nazixyositetikokusita" ] },
+  { question_text: "そのへんをうろからする", meaning: "そのへんをうろうろする", answers: [ "sonohennwourokarasuru", "sonohenurokarasuru" ] },
+  { question_text: "膝をぶつけてくろちよる(ひざをぶつけてくろちよる)", meaning: "膝をぶつけてあざになる", answers: [ "hizawobutuketekurotiyoru" ] },
+  { question_text: "家にけえるわ", meaning: "家に帰るわ", answers: [ "ienikeeruwa" ] },
+  { question_text: "そんなことしゃね", meaning: "そんなこと知らない", answers: [ "sonnnakotosyane", "sonnakotosyane", "sonnnakotosixyane", "sonnakotosixyane" ] },
+  { question_text: "でっかい猫がいてたまげだごだ", meaning: "大きい猫がいてびっくりした", answers: [ "dekkainekogaitetamagedagoda", "dextukainekogaitetamagedagoda" ] },
+  { question_text: "食べ物とっけすな(たべものとっけすな)", meaning: "食べ物奪うな", answers: [ "tabemonotokkesuna", "tabemonotoxtukesuna" ] },
+  { question_text: "おめぇそこでなにすや？", meaning: "あなたそこで何をしているの？", answers: [ "omexesokodenanisuya" ] },
+  { question_text: "紙をのりでねっぱす(かみをのりでねっぱす)", meaning: "紙をのりでくっつける", answers: [ "kamiwonoridenappasu", "kamiwonoridenextupasu" ] },
+  { question_text: "紙をもじゃくる", meaning: "紙をくしゃくしゃにする", answers: [ "kamiwomojakuru", "kamiwomozixyakuru" ] },
+  { question_text: "走ったらすっぱねあがった(はしったらすっぱねあがった)", meaning: "走ったら泥ついた", answers: [ "hasittarasuppaneagatta", "hasixtutarasuxtupaneagaxtuta" ] }
 ]
 
 marugoto_questions.each do |q_data|
