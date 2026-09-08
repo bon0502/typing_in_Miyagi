@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="text-3xl font-bold text-center text-emerald-900">🏆タイピングランキング🏆</h2>
+</div>
+<div class="container course-rankings-wrapper font-bold mb-4">
+  <% scores_by_course.each do |course, scores| %>
+    <div class="g-white p-6 rounded-lg course-ranking text-emerald-900">
+      <h2><%= course.name %></h2>
+      <% scores.each_with_index do |score, index| %>
+        <div class="ranking-item">
+          <span class="ranking-position">
+            <% case index %>
+            <% when 0 %>
+              🥇1位
+            <% when 1 %>
+              🥈2位
+            <% when 2 %>
+              🥉3位
+            <% else %>
+              <%= index + 1 %>位
+            <% end %>
+          </span>
+          <span class="ranking-name"><%= score.user.nickname %></span>
+          <span class="ranking-score"><%= score.score %>点</span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
