@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 50px auto;
   padding: 30px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f914;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -30,7 +30,7 @@
 
 /* タイピングエリア全体 */
 .typing-area {
-  background-color: #fff;
+  background-color: #fafafa;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -84,7 +84,7 @@
 
 .score-value {
   font-size: 2rem;
-  font-weight; bold;
+  font-weight: bold;
   color: #2196F3;
 }
 
@@ -103,7 +103,7 @@
 .progress-bar {
   width: 100%;
   height: 20px;
-  background-color; #e0e0e0;
+  background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -243,4 +243,29 @@
   margin-top: 5px;
   margin-bottom: 15px;
   font-style: italic;
+}
+
+.course-rankings-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.course-ranking {
+  flex: 1;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ranking-item {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }

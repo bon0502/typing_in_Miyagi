@@ -1,6 +1,7 @@
 @import "tailwindcss";
+@import "../stylesheets/typing.css";
+@import "../stylesheets/selections.css";
 
 body {
   background-color: lightblue;
 }
-

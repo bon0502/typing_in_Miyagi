@@ -4,7 +4,7 @@
   <%= stylesheet_link_tag "typing", "data-turbo-track": "reload" %>
 <% end %>
 
-<div class="typing-container">
+<div class="typing-container" data-course-id="<%= @course.id %>">
   <h1 class="course-title"><%= @course_name %></h1>
 
   <div class="progress-bar">
@@ -209,4 +209,44 @@
       }
     }
   });
+
+const courseId = document.querySelector('.typing-container').dataset.courseId;
+
+function getCsrfToken() {
+  return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+}
+
+function showResult(message) {
+  input.disabled = true;
+  document.getElementById('final-score').textContent = score;
+  document.getElementById('max-combo').textContent = maxCombo;
+  resultModal.classList.remove('hidden');
+
+  // スコア送信処理
+  fetch('/scores', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': getCsrfToken()
+    },
+    body: JSON.stringify({
+      score: {
+        score: score,
+        course_id: courseId
+      }
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('スコアの送信に失敗しました');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('スコア送信成功:', data);
+    })
+    .catch(error => {
+      console.error('エラー:', error);
+    });
+}
 </script>

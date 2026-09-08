@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Score.destroy_all
 TypingQuestion.destroy_all
 Course.destroy_all
 
@@ -88,7 +89,7 @@ meibutsu_questions = [
   { question_text: "石巻(いしのまき)", meaning: "宮城県の北東部に位置する市、太平洋に面する港町。石ノ森萬画館や多数の猫が暮らす島があることで有名。", answers: [ "ishinomaki", "isinomaki" ] },
   { question_text: "塩釜(しおがま)", meaning: "宮城県のほぼ中央に位置する市、鹽竈神社（塩竈神社）の門前町および水産港湾都市として発展してきた都市", answers: [ "shiogama", "siogama" ] },
   { question_text: "気仙沼(けせんぬま)", meaning: "宮城県の北東端に位置する市。日本一の水揚げ量を誇るカツオやサメ（フカヒレ）などの豊富な海の幸、ご当地グルメの気仙沼ホルモンが有名。", answers: [ "kesennuma", "kesennnuma" ] },
-  { question_text: "白石(しろいし)", meaning: "宮城県南部の市。白石城や400年の歴史を持つ名物「白石温麺（うーめん）」、約100頭のキツネとふれあえる「宮城蔵王キツネ村」などで有名。", answers: [ "siroishi", "shiroishi" ] },
+  { question_text: "白石(しろいし)", meaning: "宮城県南部の市。白石城や400年の歴史を持つ名物「白石温麺（うーめん）」、約100頭のキツネとふれあえる「宮城蔵王キツネ村」などで有名。", answers: [ "siroisi", "shiroishi" ] },
   { question_text: "名取(なとり)", meaning: "宮城県の中央南部に位置する市。東北地方最大の都市である仙台市に隣接しており、市内には仙台空港がある。", answers: [ "natori" ] },
   { question_text: "角田(かくだ)", meaning: "宮城県の南部に位置する市。最先端のロケット開発を行う「宇宙のまち」や、国宝・高蔵寺阿弥陀堂などの歴史文化がある。", answers: [ "kakuda" ] },
   { question_text: "多賀城(たがじょう)", meaning: "宮城県のほぼ中央に位置する市。日本三大史跡の一つである「特別史跡 多賀城跡」や「多賀城碑」などの歴史的・文化的スポットがある。", answers: [ "tagajou", "tagajyou", "tagazixyou" ] },
