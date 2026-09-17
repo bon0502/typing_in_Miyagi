@@ -13,3 +13,7 @@ ja:
       login: ログイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+  defaults:
+    message:
+      updated: "プロフィールを更新しました"
+      not_updated: "プロフィールを更新できませんでした"

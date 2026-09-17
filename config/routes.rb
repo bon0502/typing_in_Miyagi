@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "user_settings/edit"
+  get "user_settings/update"
+  get "user_settings/show"
   get "scores/index"
   get "scores/create"
   root "static_pages#top"
@@ -16,7 +19,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users, only: %i[new create]
-  resources :scores, only: [:index, :create]
+  resources :scores, only: [ :index, :create ]
+  resource :user_setting, only: %i[show edit update]
   get "selections", to: "selections#index"
   get "typing/:course_id", to: "typing#show", as: "typing"
   get "login", to: "user_sessions#new"

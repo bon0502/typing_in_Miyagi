@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <h1>プロフィール設定</h1>
+
+      <%= form_with model: @user, url: user_setting_path, method: :patch, local: true do |form| %>
+
+        <div class="mb-3">
+          <%= form.label :nickname, "ニックネーム", class: "block mb-1" %>
+          <%= form.text_field :nickname, class: "w-64 shadow appearance-none border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, "メールアドレス", class: "block mb-1" %>
+          <%= form.email_field :email, class: "w-64 shadow appearance-none border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.submit "更新", class: "bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+        </div>
+      <% end %>
+
+      <%= link_to 'プロフィールに戻る', user_setting_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
