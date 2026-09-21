@@ -138,7 +138,7 @@ marugoto_questions = [
   { question_text: "おはよう靴下だね(おはようくつしただね)", meaning: "靴下穴あいてるね", answers: [ "ohayoukutusitadane" ] },
   { question_text: "おめえこばがくせえな", meaning: "「お前は馬鹿みたいだ」", answers: [ "omeekobagakuseena" ] },
   { question_text: "しじゃかぶがいてえ", meaning: "膝が痛い", answers: [ "sijakabugaitee" ] },
-  { question_text: "目にばかできた(めにばかできた)", meaning: "「目にものもらいできた」", answers: [ "menimonomoraidekita"]},
+  { question_text: "目にばかできた(めにばかできた)", meaning: "「目にものもらいできた」", answers: [ "menimonomoraidekita" ] },
   { question_text: "服のタグがいずい(ふくのたぐがいずい)", meaning: "服のタグがチクチクする", answers: [ "fukunotagugaizui", "hukunotagugaizui" ] },
   { question_text: "目にゴミが入っていずい(めにごみがはいっていずい)", meaning: "目にゴミが入って違和感がある", answers: [ "menigomigahaitteizui", "menigomigahaixtuteizui" ] },
   { question_text: "お米うるかしておいて(おめいうるかしておいて)", meaning: "お米を(水に)浸しておいて", answers: [ "okomeurukasiteoite", "okomeurukashiteoite" ] },

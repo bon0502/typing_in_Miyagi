@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "scores/index"
-  get "scores/create"
   root "static_pages#top"
   get "static_pages/top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,7 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users, only: %i[new create]
-  resources :scores, only: [:index, :create]
+  resources :scores, only: [ :index, :create ]
+  resource :user_setting, only: %i[show edit update]
   get "selections", to: "selections#index"
   get "typing/:course_id", to: "typing#show", as: "typing"
   get "login", to: "user_sessions#new"
