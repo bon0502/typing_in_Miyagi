@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "scores/index"
-  get "scores/create"
   root "static_pages#top"
   get "static_pages/top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
