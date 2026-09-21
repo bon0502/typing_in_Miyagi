@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "user_settings/edit"
-  get "user_settings/update"
-  get "user_settings/show"
   get "scores/index"
   get "scores/create"
   root "static_pages#top"
