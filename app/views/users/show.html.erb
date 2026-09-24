@@ -1,0 +1,11 @@
+<div class="profile-score">
+  <h3>ベストスコア</h3>
+  <p><%= @best_score %>点</p>
+
+  <h3>スコア履歴</h3>
+  <ul>
+    <% @scores.each do |score| %>
+      <li><%= score.score %>点 - <%= score.created_at.strftime("%Y年%m月%d日 %H:%M") %></li>
+    <% end %>
+  </ul>
+</div>

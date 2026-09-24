@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @best_score = @user.scores.maximum(:score)
+  end
+
   private
 
   def user_params
