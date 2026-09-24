@@ -5,6 +5,11 @@ class UserSettingsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @best_score = @user.scores
+                        .joins(:course)
+                        .select("courses.name AS course_name, MAX(scores.score) AS best_score")
+                        .group("courses.name")
   end
 
   def update
