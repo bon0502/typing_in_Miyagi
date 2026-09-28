@@ -49,7 +49,7 @@ hougen_questions = [
   { question_text: "どんぶく", meaning: "「綿の入った羽織るもの。」", answers: [ "donbuku", "donnbuku" ] },
   { question_text: "なにすや  ", meaning: "「なんだって？」", answers: [ "nanisuya" ] },
   { question_text: "ねっぱす", meaning: "「くっつける」「接着する」「貼り付ける」", answers: [ "neppasu", "naxtupasu" ] },
-  { question_text: "もじゃくる", meaning: "(紙など)くしゃくしゃにする。しわくちゃにする。", answers: [ "mojakuru", "mozixyakuru","mozyakuru" ] },
+  { question_text: "もじゃくる", meaning: "(紙など)くしゃくしゃにする。しわくちゃにする。", answers: [ "mojakuru", "mozixyakuru", "mozyakuru" ] },
   { question_text: "んだ", meaning: "「そうだ」", answers: [ "nda", "nnda" ] },
   { question_text: "もぞこい", meaning: "「かわいそう」", answers: [ "mozokoi" ] },
   { question_text: "すっぱね", meaning: "雨の日に足につく泥はねの事。", answers: [ "suppane", "suxtupane" ] }
