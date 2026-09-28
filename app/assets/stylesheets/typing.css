@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 50px auto;
   padding: 30px;
-  background-color: #f9f9f914;
+  background-color: #8eed9b;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -15,7 +15,7 @@
   color: #333;
   margin-bottom: 30px;
   padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #66ea89 0%, #4ba258 100%);
   color: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -80,6 +80,8 @@
   padding: 15px;
   background-color: #e3f2fd;
   border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .score-value {
@@ -92,6 +94,7 @@
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #f44336;
+  font-weight: bold;
 }
 
 .combo-display {
@@ -130,6 +133,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.start-button:hover {
+  background-color: #45a049;
 }
 
 .start-button:active {
@@ -268,4 +275,5 @@
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
 }

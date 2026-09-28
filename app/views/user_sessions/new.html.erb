@@ -1,15 +1,16 @@
+<% content_for(:title, t('.title')) %>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4">
-      <div class="text-2xl font-bold mb-6">ログイン</div>
+      <div class="text-emerald-900 text-3xl font-bold mb-6">ログイン</div>
         <%= form_with url: login_path, local: false do |f| %>
           <div class="mb-3">
             <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.email_field :email, name: 'email', class: "shadow appearance-none border px-3 py-2 focus:outlline-none focus:ring-2 focus:ring-blue-500" %>
+            <%= f.email_field :email, name: 'email', class: "shadow appearance-none border px-3 py-2 focus:outlline-none focus:ring-2 focus:ring-blue-500 rounded" %>
           </div>
           <div class="mb-3">
             <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.password_field :password, name: 'password', class: "shadow appearance-none border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"  %>
+            <%= f.password_field :password, name: 'password', class: "shadow appearance-none border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"  %>
           </div>
           <%= f.submit "ログイン", class: "bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         <% end %>

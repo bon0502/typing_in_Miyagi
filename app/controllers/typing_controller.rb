@@ -1,4 +1,5 @@
 class TypingController < ApplicationController
+  skip_before_action :require_login, only: %i[show check_answer]
   def show
     # パラメータから course_id を取得
     @course = Course.find(params[:course_id])
