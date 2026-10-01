@@ -1,4 +1,4 @@
-class Admin::TypingAnswersController < ApplicationController
+class Admin::TypingAnswersController < Admin::BaseController
   before_action :set_course
   before_action :set_typing_question
 

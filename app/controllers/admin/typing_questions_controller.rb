@@ -1,4 +1,4 @@
-class Admin::TypingQuestionsController < ApplicationController
+class Admin::TypingQuestionsController < Admin::BaseController
   before_action :set_course
   before_action :set_typing_question, only: [ :edit, :update, :destroy ]
 
