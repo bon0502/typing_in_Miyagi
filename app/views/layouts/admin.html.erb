@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>管理画面</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbolinks-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <nav>
+      <ul style="display: flex; gap: 20px; margin-bottom: 10px;">
+        <li><%= link_to "コース一覧", admin_courses_path %></li>
+        <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+        <li><%= link_to "サイトTOPへ", root_path %></li>
+      </ul>
+    </nav>
+
+    <hr>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
