@@ -30,6 +30,6 @@ Rails.application.routes.draw do
         resources :typing_answers, only: [ :new, :create, :destroy ]
       end
     end
-    resources :users, only: %i[index show]
+    resources :users, only: %i[index show edit update]
   end
 end

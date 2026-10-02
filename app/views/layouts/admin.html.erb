@@ -8,6 +8,14 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
+    <% if notice %>
+      <div class="alert alert-info"><%= notice %></div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
+
     <nav>
       <ul style="display: flex; gap: 20px; margin-bottom: 10px;">
         <li><%= link_to "コース一覧", admin_courses_path %></li>
