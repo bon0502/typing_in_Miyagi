@@ -48,6 +48,12 @@ gem "image_processing", "~> 1.2"
 # 本番環境用のgem
 gem "pg"
 
+# Googleログイン用のgem
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+gem "dotenv-rails"
+
 group :development, :test do
   # gem "mysql2", "~> 0.5"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
