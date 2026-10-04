@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
+  get "privacy", to: "pages#privacy"
+  get "terms", to: "pages#terms"
+
   post "typing/:id/check_answer", to: "typing#check_answer", as: "check_answer"
 
   namespace :admin do
