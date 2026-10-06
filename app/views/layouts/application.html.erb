@@ -25,10 +25,12 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render "shared/header" %>
-    <% else %>
-      <%= render "shared/before_login_header" %>
+    <% unless controller_name == 'typing' %>
+      <% if logged_in? %>
+        <%= render "shared/header" %>
+      <% else %>
+        <%= render "shared/before_login_header" %>
+      <% end %>
     <% end %>
 
     <%= render "shared/flash_messages" %>

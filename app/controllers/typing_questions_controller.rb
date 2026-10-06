@@ -19,5 +19,5 @@ class TypingQuestionsController < ApplicationController
     else
         render json: { result: "incorrect", message: "不正解です。もう一度挑戦してください。" }
     end
-end
+  end
 end
