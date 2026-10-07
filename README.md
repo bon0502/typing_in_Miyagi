@@ -1,24 +1,37 @@
-# README
+# みやぎタイピング
+宮城県のことを知りながらタイピング練習ができるアプリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`方言コース` 
+`名物地名コース`
+`方言会話コース`
 
-Things you may want to cover:
+の３つのコースがあります。
+### 1. サービスの概要
 
-* Ruby version
+みやぎタイピングは、その名の通りタイピング練習ができるWebアプリです。
 
-* System dependencies
+ただタイピング練習をするだけではなく、タイピングをしながら宮城県で使われている方言や、ご当地グルメ、宮城県の地名を勉強することができます。
 
-* Configuration
+### 2. 主な機能
+#### ユーザー機能
+* ユーザー登録
+* ログイン / ログアウト(Googleログイン)
+* プロフィール編集
 
-* Database creation
+#### タイピング
+* スコア表示
+* タイムの表示
+* 文字入力
+* 正誤判断
 
-* Database initialization
+#### ランキング機能
+* 各ユーザーのコース別のスコアを表示
 
-* How to run the test suite
+### 3. 開発背景
+　自分自身、タッチタイピングがあまり得意ではなかったため練習したく、タイピングアプリを作成したいと考えていました。ですが、ただタイピングアプリを作成するのは個性がなく、面白くないと思っていました。そんな時にローカルテレビで宮城の方言コーナーが放送されていて、宮城県に住んでいる人にはわかる方言でも他県の方には伝わらない面白い方言がありました。タイピングアプリを作成するなら、楽しく宮城の方言を学びながら、タイピング練習ができたら面白いなと思い作成しました。
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 4. 使用技術
+* Ruby
+* CSS
+* JavaScript
+* SQL
