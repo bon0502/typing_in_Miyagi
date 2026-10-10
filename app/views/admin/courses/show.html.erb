@@ -9,27 +9,27 @@
   <h2 class="mt-4">問題一覧 (<%= @typing_questions.count %>問)</h2>
 
   <% if @typing_questions.present? %>
-    <table class="table table-striped">
+    <table class="w-full border-collapse border border-gray-300">
       <thead>
-        <tr>
-          <th>No.</th>
-          <th>問題文</th>
-          <th>答え</th>
-          <th>操作</th>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 p-2">No.</th>
+          <th class="border border-gray-300 p-2">問題文</th>
+          <th class="border border-gray-300 p-2">答え</th>
+          <th class="border border-gray-300 p-2">操作</th>
         </tr>
       </thead>
       <tbody>
         <% @typing_questions.each_with_index do |question, index| %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td><%= question.question_text %></td>
-            <td>
+          <tr class="<%= index.even? ? 'bg-gray-100' : '' %>">
+            <td class="border border-gray-300 p-2"><%= index + 1 %></td>
+            <td class="border border-gray-300 p-2"><%= question.question_text %></td>
+            <td class="border border-gray-300 p-2">
               <% if question.typing_answers.any? %>
                 <ul>
-                  <%= question.typing_answers.each do |answer| %>
+                  <% question.typing_answers.each do |answer| %>
                     <li>
                       <%= answer.answer_text %>
-                      <%= link_to '削除', admin_course_typing_question_typing_answer_path(@course, question, answer), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
+                      <%= link_to '削除', admin_course_typing_question_typing_answer_path(@course, question, answer), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
                     </li>
                   <% end %>
                 </ul>
@@ -38,10 +38,9 @@
               <% end %>
               <%= link_to '答えを追加', new_admin_course_typing_question_typing_answer_path(@course, question), class: 'btn btn-sm btn-success' %>
             </td>
-            <td>
+            <td class="border border-gray-300 p-2">
               <%= link_to '編集', edit_admin_course_typing_question_path(@course, question), class: 'btn btn-sm btn-warning' %>
-              <%= button_to '削除', admin_course_typing_question_path(@course, question), method: :delete,
-                            data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
+              <%= link_to '削除', admin_course_typing_question_path(@course, question), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
             </td>
           </tr>
         <% end %>

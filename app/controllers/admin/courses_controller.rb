@@ -6,7 +6,7 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def show
-    @typing_questions = @course.typing_questions.order(:id)
+    @typing_questions = @course.typing_questions.includes(:typing_answers).order(:id)
   end
 
   def new
