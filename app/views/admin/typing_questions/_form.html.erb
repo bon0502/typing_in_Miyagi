@@ -37,7 +37,9 @@
         </div>
       <% end %>
     </div>
-    <button type="button" class="btn btn-sm btn-secondary mt-2" id="add-answer">答えを追加</button>
+    <% if typing_question.persisted? %>
+      <%= link_to '答えを追加', new_admin_course_typing_question_typing_answer_path(@course, typing_question), class: 'btn btn-sm btn-success' %>
+    <% end %>
   </div>
 
   <div class="mb-3">
